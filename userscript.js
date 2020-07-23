@@ -104,7 +104,7 @@
             fetch(link).then(t => {
                 return t.blob().then(b => {
                     const a = document.createElement("a");
-                    const name = `${getUser(article)}_${getTime(article)}${getIndex(article)}`;
+                    const name = `${getUser(article)}_${getTime(article)}-${getPostId(article)}${getIndex(article)}`;
                     a.href = URL.createObjectURL(b);
                     a.setAttribute("download", name);
                     a.click();
@@ -119,6 +119,11 @@
     // function made by Paul Dmytrewycz.
     function getUser(article) {
         return article.querySelector(".e1e1d a").innerText.replace(".", "-");
+    }
+
+    function getPostId(article) {
+        const regex = /.*\/p\/(.*)\/.*/gi;
+        return article.querySelector(".c-Yi7").href.replace(regex, '$1');
     }
 
     function getTime(article) {
