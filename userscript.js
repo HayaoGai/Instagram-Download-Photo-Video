@@ -80,7 +80,7 @@
     }
 
     function onClick() {
-        const parent = this.closest(".eo2As").previousElementSibling;
+        const parent = this.closest(".eo2As").parentNode.parentNode.previousElementSibling;
         // a page panel under photo or video, it means there is only one photo or video if not exists.
         const single = !parent.querySelectorAll("._3eoV-.IjCL9").length;
         const file = single ? parent.querySelector("video") || parent.querySelector("img") : detectIndex(parent, parent.querySelectorAll("li.Ckrof"));
